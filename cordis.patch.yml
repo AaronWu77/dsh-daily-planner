@@ -1,0 +1,4 @@
+- insert:
+    - id: dsh-daily-planner
+      name: dsh-daily-planner
+      config: {}

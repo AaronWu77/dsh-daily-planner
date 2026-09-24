@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`daily planning card > keeps an uncertain save distinct from saved state and recovers after retry (en) > uncertain-save-en 1`] = `"Connection failed. Your change has not been confirmed. Retry to safely check or save it.Retry saving"`;
+
+exports[`daily planning card > keeps an uncertain save distinct from saved state and recovers after retry (zh) > uncertain-save-zh 1`] = `"连接失败，修改尚未确认。可重试以安全确认或保存，不会重复创建。重试保存"`;
+
+exports[`daily planning card > records stable Chinese first-use output 1`] = `"今日计划×2026-09-21已保存今天0 项任务给今天留一点清晰的安排。添加一项任务，或先设置你的例行任务。＋例行任务设置开始今天只有你决定，任务才会改变日期。"`;

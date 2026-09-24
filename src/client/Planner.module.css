@@ -1,0 +1,394 @@
+/* Feature presentation consumes the host theme without global overrides. */
+.entry {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 40px;
+  padding: 9px 10px;
+  border: 1px solid color-mix(in srgb, var(--dsw-alias-border-l2) 70%, transparent);
+  border-radius: 12px;
+  /* Same frosted card treatment as the Context dashboard's sidebar-foot widget,
+     so the two foot entries read as one family of cards. */
+  background: color-mix(in srgb, var(--dsw-alias-bg-layer-1) 62%, transparent);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  backdrop-filter: blur(18px) saturate(150%);
+  box-shadow: var(--dsw-shadow-lv1, 0 2px 10px rgba(0, 0, 0, 0.18));
+  color: var(--dsw-alias-label-primary);
+  cursor: pointer;
+  font: inherit;
+  box-sizing: border-box;
+  text-align: left;
+  transition: background 120ms ease, box-shadow 120ms ease;
+}
+.entry:hover,
+.entry[data-active="true"] {
+  background: color-mix(in srgb, var(--dsw-alias-bg-layer-1) 78%, transparent);
+  box-shadow: var(--dsw-shadow-lv2, 0 4px 16px rgba(0, 0, 0, 0.22));
+}
+/* The 56px rail keeps the bare icon button: the card chrome belongs to the wide column. */
+.entry[data-wide="false"] {
+  width: 36px;
+  height: 36px;
+  padding: 8px;
+  justify-content: center;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.entryLabel {
+  flex: 1;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 500;
+}
+.entryBadge,
+.badge {
+  font-size: 11px;
+  line-height: 18px;
+  color: var(--dsw-alias-label-secondary);
+  white-space: nowrap;
+}
+.entryBadge {
+  padding: 1px 7px;
+  border-radius: 6px;
+  background: var(--dsw-alias-interactive-bg-hover);
+}
+.card {
+  position: fixed;
+  left: clamp(12px, var(--planner-left), calc(100vw - 400px));
+  --planner-inset: clamp(
+    12px,
+    var(--planner-bottom),
+    max(12px, calc(100dvh - 520px))
+  );
+  bottom: var(--planner-inset);
+  width: min(388px, calc(100vw - 24px));
+  max-height: calc(100dvh - var(--planner-inset) - 12px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  pointer-events: auto;
+  z-index: 900;
+  border: 0;
+  border-radius: 20px;
+  background: var(--dsw-glass-fill-raised);
+  -webkit-backdrop-filter: var(--dsw-glass-blur-strong);
+  backdrop-filter: var(--dsw-glass-blur-strong);
+  --dsw-elevation-stroke-color: var(--dsw-glass-stroke);
+  box-shadow: var(--dsw-elevation-prominent);
+  color: var(--dsw-alias-label-primary);
+  font-size: 13px;
+  line-height: 1.55;
+  animation: arrive 140ms ease-out;
+}
+.card:focus {
+  outline: none;
+}
+.card :focus-visible,
+.entry:focus-visible {
+  outline: 2px solid var(--dsw-alias-brand-primary-new-colorprimary-new-color);
+  outline-offset: 2px;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 16px 14px 4px 20px;
+  flex-shrink: 0;
+}
+.heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+.heading h2 {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.subtitle {
+  display: flex;
+  justify-content: space-between;
+  padding: 2px 20px 12px;
+  color: var(--dsw-alias-label-tertiary);
+  font-size: 11px;
+  flex-shrink: 0;
+}
+.body {
+  overflow: auto;
+  min-height: 0;
+  overscroll-behavior: contain;
+  padding: 0 16px 12px;
+  scrollbar-gutter: stable;
+}
+.sectionTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 4px 6px;
+  color: var(--dsw-alias-label-secondary);
+  font-size: 11px;
+}
+.sectionTitle h3 {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 500;
+}
+.task {
+  padding: 7px 4px;
+  border-bottom: 0.5px solid var(--dsw-alias-border-primary);
+}
+.taskMain {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  min-height: 36px;
+}
+.taskCheck {
+  flex: 1;
+  min-width: 0;
+  min-height: 36px;
+  align-items: flex-start;
+  padding-top: 6px;
+  overflow-wrap: anywhere;
+}
+.taskCheck input {
+  min-width: 17px;
+  min-height: 17px;
+  cursor: pointer;
+}
+.taskCheck span {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.task[data-status="done"] .taskCheck {
+  color: var(--dsw-alias-label-tertiary);
+  text-decoration: line-through;
+}
+.taskMeta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding-left: 26px;
+  font-size: 11px;
+  color: var(--dsw-alias-label-tertiary);
+}
+.badge {
+  background: var(--dsw-alias-interactive-bg-hover);
+  padding: 0 5px;
+  border-radius: 4px;
+}
+.taskActions,
+.inline {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.taskActions {
+  margin: 5px 0 2px 22px;
+}
+.earlier {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin: 2px 0 12px;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--dsw-alias-interactive-bg-hover);
+  color: var(--dsw-alias-label-secondary);
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+}
+.earlier span:last-child {
+  white-space: nowrap;
+  font-size: 12px;
+}
+.addForm {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 14px 0 8px;
+}
+.addForm > span {
+  flex: 1;
+  min-width: 0;
+}
+.details {
+  margin-top: 12px;
+  color: var(--dsw-alias-label-secondary);
+}
+.details summary {
+  cursor: pointer;
+  min-height: 32px;
+  line-height: 32px;
+  font-size: 12px;
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 16px 4px;
+  border-top: 0.5px solid var(--dsw-alias-border-primary);
+  flex-shrink: 0;
+}
+.footnote {
+  text-align: center;
+  padding: 8px 16px 12px;
+  color: var(--dsw-alias-label-tertiary);
+  font-size: 10px;
+  flex-shrink: 0;
+}
+.hint {
+  font-size: 12px;
+  line-height: 1.65;
+  color: var(--dsw-alias-label-secondary);
+  margin: 8px 2px 12px;
+}
+.empty {
+  text-align: center;
+  padding: 28px 12px;
+  color: var(--dsw-alias-label-secondary);
+}
+.empty svg {
+  width: 28px;
+  height: 28px;
+  opacity: 0.65;
+  margin-bottom: 8px;
+}
+.empty p {
+  margin: 7px 0;
+}
+.empty small {
+  color: var(--dsw-alias-label-tertiary);
+}
+.alert {
+  margin: 0 16px 10px;
+  padding: 12px;
+  border-radius: 10px;
+  background: var(--dsw-alias-interactive-bg-hover);
+  flex-shrink: 0;
+}
+.alert p {
+  margin: 0 0 6px;
+}
+.alert small {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--dsw-alias-label-secondary);
+}
+.notice {
+  margin: 0 16px 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+.notice > span {
+  flex: 1;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px 4px;
+}
+.form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+}
+.fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+.fieldset legend {
+  margin-bottom: 6px;
+}
+.weekdays {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  margin-top: 12px;
+}
+.routineRow {
+  padding: 10px 2px;
+  border-bottom: 0.5px solid var(--dsw-alias-border-primary);
+}
+.routineRow .sectionTitle {
+  margin: 0 0 5px;
+  color: var(--dsw-alias-label-primary);
+  font-size: 13px;
+}
+.routineRow strong {
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+.routineRow small {
+  color: var(--dsw-alias-label-tertiary);
+}
+.routineRow .inline {
+  margin-top: 8px;
+}
+.fullWidth {
+  width: 100%;
+  margin-top: 14px;
+}
+.recoveryRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 2px;
+  border-bottom: 0.5px solid var(--dsw-alias-border-primary);
+}
+.recoveryRow > div {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.recoveryRow small {
+  display: block;
+  color: var(--dsw-alias-label-tertiary);
+}
+.group {
+  margin-bottom: 16px;
+}
+@keyframes arrive {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    animation: none;
+  }
+}
+@media (max-width: 600px) {
+  .card {
+    left: 12px;
+    bottom: 12px;
+    max-height: calc(100dvh - 24px);
+  }
+  .taskActions button {
+    min-height: 36px;
+  }
+}
