@@ -16,6 +16,10 @@ const cleanup: (() => Promise<void>)[] = [];
 afterEach(async () => {
   for (const dispose of cleanup.splice(0).reverse()) await dispose();
 });
+function ownerFetch(connection: HostConnectionService) {
+  const handler = connection.createSharedFetchHandler("/api");
+  return { fetch: (request: Request) => handler.fetch(request, connection.browserPeer) };
+}
 async function harness() {
   const root = await mkdtemp(join(tmpdir(), "daily-planner-test-"));
   cleanup.push(() => rm(root, { recursive: true, force: true }));
@@ -131,9 +135,7 @@ describe("real Connection exact registration and plugin disposal", () => {
     expect(await readFile(path, "utf8")).toBe(before);
     expect(
       (
-        await connection
-          .createSharedFetchHandler("/api")
-          .fetch(new Request("http://localhost/api/dsh-daily-planner"))
+        await ownerFetch(connection).fetch(new Request("http://localhost/api/dsh-daily-planner"))
       ).status,
     ).toBe(404);
     const recovered = await facility.open(plannerDomainSpec("UTC"));
@@ -173,7 +175,7 @@ describe("real Connection exact registration and plugin disposal", () => {
   it("mounts only the exact path and methods, removes it on unload, and reopens the domain", async () => {
     const { ctx, facility } = await harness();
     const carrier = ctx.plugin((connectionCtx) => {
-      // Shared dispatch tests do not invoke authentication; the physical carrier owns that policy.
+      // Shared dispatch uses the admitted browser owner; the physical carrier authenticates it.
       new HostConnectionService(
         connectionCtx,
         [],
@@ -183,7 +185,7 @@ describe("real Connection exact registration and plugin disposal", () => {
     await carrier;
     cleanup.push(() => carrier.dispose());
     const connection = ctx.get("connection") as HostConnectionService;
-    const shared = connection.createSharedFetchHandler("/api");
+    const shared = ownerFetch(connection);
     const fiber = ctx.plugin(
       plugin,
       plugin.Config({ timeZone: "UTC" } as plugin.Config),
