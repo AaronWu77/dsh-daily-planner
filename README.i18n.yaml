@@ -1,0 +1,40 @@
+# Bilingual-pair consistency record for README.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# Update both languages together; record section hashes with the companion Host
+# translation-pairing-record.ts helpers against this independent repository root.
+/:
+  en: 500be9d9f13ffcb0
+  zh: 35086f6e777cc655
+/daily-planner:
+  en: 88131a95050f7967
+  zh: df4b7387879cc02a
+/daily-planner/plugin-information:
+  en: e69c10c7aae86d88
+  zh: be92b10c4967a9c6
+/daily-planner/source-and-attribution:
+  en: d6155580f75c6027
+  zh: 66cce18fed9f0aaf
+/daily-planner/summary:
+  en: 9e50635665404b1e
+  zh: 1e28bac222e3f6c5
+/daily-planner/table-of-contents:
+  en: 557a248dd3454538
+  zh: f64e446a08c10cab
+/daily-planner/use-this-package:
+  en: 7e7c8dfdafe8b089
+  zh: 4265b1be167a7f8e
+/daily-planner/configuration:
+  en: 7f7627c3543e31fe
+  zh: eb658371cea38877
+/daily-planner/data-and-recovery:
+  en: 7e0b1a855d944cf2
+  zh: 1422c822fec87d88
+/daily-planner/verification:
+  en: e38ee679e4b15ef6
+  zh: b098b24f51a7b3f2
+/daily-planner/model-experience:
+  en: d29725db29376bc1
+  zh: a2c9373bf17ffaeb
+/daily-planner/known-limitations-and-deferred-work:
+  en: 7a06989e9ffdea9d
+  zh: 32646e528ef10fd9

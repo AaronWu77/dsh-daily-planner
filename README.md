@@ -5,6 +5,27 @@ kind: "package-bundle"
 
 # Daily Planner
 
+<a id="plugin-information"></a>
+## Plugin information
+
+Plan daily tasks and recurring routines with explicit manual rescheduling.
+
+| Field | Value |
+|---|---|
+| Package | `dsh-daily-planner` |
+| Checkout version | `0.1.2` |
+| Maintained repository | [AaronWu77/dsh-daily-planner](https://github.com/AaronWu77/dsh-daily-planner) |
+| Package license | MIT |
+
+Package identity, license and upstream declarations are maintained in [package.json](package.json). A checkout version does not establish a published release or verified compatibility; retain the existing qualification and deployment limits below.
+
+<a id="source-and-attribution"></a>
+## Source and attribution
+
+No external implementation source is declared in this package manifest. This is not a claim that all code and dependencies are original.
+
+When a package is derived from another project, distinguish its maintained repository from that upstream project and preserve the original author, copyright, license and notice statements. An unrecorded upstream baseline must not be inferred from the local version.
+
 English | [中文](README.zh.md)
 
 ## Summary

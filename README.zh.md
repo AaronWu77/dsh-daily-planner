@@ -5,6 +5,27 @@ kind: "package-bundle"
 
 # 今日计划
 
+<a id="plugin-information"></a>
+## 插件信息
+
+管理每日任务与重复计划，并手动调整未完成任务的日期。
+
+| 字段 | 内容 |
+|---|---|
+| 包名 | `dsh-daily-planner` |
+| 当前 checkout 版本 | `0.1.2` |
+| 维护仓库 | [AaronWu77/dsh-daily-planner](https://github.com/AaronWu77/dsh-daily-planner) |
+| 包许可证 | MIT |
+
+包身份、许可证和上游声明以 [package.json](package.json) 为准。checkout 版本不代表已发布版本或经过验证的兼容性；下文已有的验证范围与部署限制仍然适用。
+
+<a id="source-and-attribution"></a>
+## 来源与归属
+
+本包清单未声明外部实现来源；这不表示全部代码与依赖均为原创。
+
+若包基于其他项目开发，应区分维护仓库与上游项目，并保留原作者、版权、许可证与通知声明；未记录的上游基准不能根据本地版本推断。
+
 [English](README.md) | 中文
 
 ## 概述
