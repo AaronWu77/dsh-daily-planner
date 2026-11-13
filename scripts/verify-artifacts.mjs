@@ -50,7 +50,7 @@ try {
   const connection = ctx.get("connection");
   const shared = connection.createSharedFetchHandler("/api");
   const fetchRoute = (path = "/api/dsh-daily-planner", init) =>
-    shared.fetch(new Request("http://localhost" + path, init));
+    shared.fetch(new Request("http://localhost" + path, init), connection.browserPeer);
   const mount = async () => {
     const fiber = ctx.plugin(plugin, plugin.Config({ timeZone: "UTC" }));
     await fiber;
