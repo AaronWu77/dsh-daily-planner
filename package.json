@@ -1,5 +1,6 @@
 {
   "name": "dsh-daily-planner",
+  "icon": "./icon.svg",
   "version": "0.1.2",
   "description": "Personal daily planning card for DSH, with explicit manual rescheduling.",
   "repository": {
@@ -16,6 +17,7 @@
     "./package.json": "./package.json"
   },
   "files": [
+    "icon.svg",
     "locale/*.json",
     "lib",
     "cordis.patch.yml",
