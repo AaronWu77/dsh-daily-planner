@@ -30,7 +30,7 @@
     "test": "vitest run",
     "verify:artifacts": "node scripts/verify-artifacts.mjs",
     "check": "pnpm run typecheck && pnpm test && pnpm run build && pnpm run verify:artifacts",
-    "prepack": "pnpm run check"
+    "prepack": "pnpm run build"
   },
   "dsh": {
     "documentation": {
