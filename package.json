@@ -2,7 +2,7 @@
   "name": "dsh-daily-planner",
   "icon": "./icon.svg",
   "version": "0.1.2",
-  "description": "Personal daily planning card for DSH, with explicit manual rescheduling.",
+  "description": "Manage daily tasks and recurring plans, and reschedule unfinished items",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AaronWu77/dsh-daily-planner.git"
